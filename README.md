@@ -8,4 +8,4 @@ Li, C., Xu, C., Gui, C., Fox, M.D., 2010. Distance Regularized Level Set Evoluti
 
 ##Otsu Threshold
 
-otsu_threshold.py: implementation of Otsu threshold in lua. Other two related files are for cross-validation from the python implementation.
+otsu_threshold.py: implementation of Otsu threshold in lua. Other two related files are for cross-validation from the python skimage implementation.
