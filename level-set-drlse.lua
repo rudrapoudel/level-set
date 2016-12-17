@@ -184,6 +184,8 @@ function applyDRLSE(img, phi0, drlse_params, gkernel, shape_prior)
     -- DRLSE outer loop
     for i=1, drlse_params.iter_outer do
         drlse(phi0, f, drlse_params, shape_prior)
+        -- Save seg-img for animation
+        -- seg_img = torch.le(phi0, 0):typeAs(simg)
     end
 
     -- Refine the zero level contour by further level set evolution with alfa=0
@@ -199,6 +201,7 @@ end
 function test_drlse()
     local log, img, shape_prior, phi0, gkernel, seg_img
     
+    -- Load image
     log = 'log/'
     img = image.load('image/gourd.jpg')[1]
     shape_prior = image.load('image/shape_prior.png')[1]
@@ -229,7 +232,7 @@ function test_drlse()
     phi0 = img:clone()
     phi0:fill(drlse_params.phi_c0)
 
-    -- Init phi 0
+    -- Init phi 0- i.e. starting point of the level-set
     for i=25, 28 do
         for j=20, 23 do
             phi0[{i,j}] = -drlse_params.phi_c0
@@ -241,10 +244,11 @@ function test_drlse()
         end
     end
     
+    -- Call main DRLSE level-set function
     img:mul(255)
     seg_img = applyDRLSE(img, phi0, drlse_params, gkernel, shape_prior)
 
-    -- DEBUG
+    -- DEBUG- save image to view the result
     image.save(log .. 'seg_img.png', seg_img)
 end
 
