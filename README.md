@@ -61,9 +61,11 @@ Implementation of distance regularized level-set evolution (DRLSE) [[1]](#refere
 ##Ouput Examples,
 
 An example for a synthetic image
+
 ![Alt text](image/gourd_contour.gif?raw=true "DRLSE Example")
 
 An example for a real cell image
+
 ![Alt text](image/twocells_contour.gif?raw=true "DRLSE Example")
 
 ##Otsu Threshold
